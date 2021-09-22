@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>JSP1 프로젝트[7]</title>
+<title>Day3[2] - db 회원 처리</title>
 	<style>
 		ul{
 			list-style : none;

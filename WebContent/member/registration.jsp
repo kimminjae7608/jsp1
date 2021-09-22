@@ -28,8 +28,8 @@
 		out.print(cus);
 		
 		//1) 추가된 회원정보만 확인하기	-> 요청전달ㅇ
-		//request.setAttribute("Customer", cus);
-		//pageContext.forward("registration_view.jsp");
+		request.setAttribute("Customer", cus);
+		pageContext.forward("registration_view.jsp");
 		//2) 사용자가 요청하지 않았지만 회원리스트 list.jsp로 요청 바꾸기
-		response.sendRedirect("list.jsp");
+		//response.sendRedirect("list.jsp");
 		%>	
