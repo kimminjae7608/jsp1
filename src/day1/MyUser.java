@@ -12,6 +12,7 @@ import lombok.ToString;
 
 
 public class MyUser {
+	//필드(또는 프로퍼티,속성)
 	private String name;
 	private int age;
 	private String location;

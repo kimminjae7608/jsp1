@@ -38,9 +38,7 @@
 			<%-- <li><%= names[i] + (i+1) %> </li> --%>
 			
 			<%
-			
 				}
-				
 				MyUser my = new MyUser();
 				my.setAge(23); 
 				my.setName("사나");	
