@@ -19,13 +19,18 @@ select {
 }
 
 input[type="submit"],
-input[type="reset"] {
+input[type="reset"],
+input[type="button"] {
+  padding: 7px 15px;
+  margin: 7px 15px;
   cursor: pointer;
+  font-size:1.1em;
   border: none;
 }
 
 input[type="submit"]:hover,
-input[type="reset"]:hover {
+input[type="reset"]:hover,
+input[type="button"]:hover {
   background-color: red;
 }
 input[type="text"],

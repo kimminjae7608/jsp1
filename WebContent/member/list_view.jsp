@@ -42,7 +42,8 @@
 			for(Customer cv : list){
 	%>
 	<ul>
-		<li id ="name"> <%= cv.getName() %></li>
+		<li id ="name"><a href="update.jsp?idx=<%=cv.getIdx()%>">
+		<%= cv.getName() %></a></li>
 		<li id ="email"> <%= cv.getEmail() %></li>
 		<li> <%= cv.getAddr() %> </li>
 		<li> <%= cv.getGender() %> </li>

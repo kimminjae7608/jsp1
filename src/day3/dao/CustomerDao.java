@@ -17,6 +17,32 @@ public class CustomerDao {
 		return dao;
 	}
 	
+	public Customer selectOne(int idx) {
+		String sql = "select * from customer where idx=?";	//idx 는 pk 컬럼
+		Customer cus =null;
+		Connection conn = MySQLConnectionUtil.connect();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, idx);
+			rs= pstmt.executeQuery();
+			
+			if(rs.next()) {
+				cus = new Customer(rs.getInt(1),rs.getString(2),rs.getString(3),
+						rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7),rs.getString(8));
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("selectAllOne 오류 :" +e.getMessage());
+			e.printStackTrace();
+		}
+		
+		
+		return cus;	//idx가 없는 값으로 조회하면 리턴은 null
+	}
+	
 	public List<Customer> selectAll(){
 		List<Customer> list = new ArrayList<Customer>();
 		String sql="select * from customer";
@@ -54,6 +80,54 @@ public class CustomerDao {
 		}
 		
 		return list;
+	}
+	
+	public void deleteIDX(int idx) {
+		String sql="delete from customer where idx=?";
+		Connection conn = MySQLConnectionUtil.connect();
+		PreparedStatement pstmt =null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, idx);
+			pstmt.execute();
+			conn.commit();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("delete 오류 : "+e.getMessage());
+		} finally {
+			try {
+				pstmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} MySQLConnectionUtil.close(conn);
+		}
+	}
+	
+	public void update(Customer cus) {
+		String sql ="update customer set email = ?, addr=? where idx=?";
+		Connection conn = MySQLConnectionUtil.connect();
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, cus.getEmail());
+			pstmt.setString(2, cus.getAddr());
+			pstmt.setInt(3, cus.getIdx());
+			pstmt.execute();
+			conn.commit();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("update 오류 : "+e.getMessage());
+		} finally {
+			try {
+				pstmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			MySQLConnectionUtil.close(conn);
+		}
 	}
 	
 	

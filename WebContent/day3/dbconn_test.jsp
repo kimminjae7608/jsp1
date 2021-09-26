@@ -18,7 +18,6 @@
 		out.print("<br>");
 		if(conn == null) out.print("연결 실패입니다.");
 		else out.print("연결 성공입니다.");
-	
 	%>
 
 </body>
